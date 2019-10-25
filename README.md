@@ -1,2 +1,2 @@
 # Étape
-## Inscription des participants
+## Ardoise vierge
