@@ -1,2 +1,1 @@
-# Étape
-## Ardoise vierge
+# Étape : Ardoise vierge
