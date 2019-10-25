@@ -1,22 +1,36 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
+import { Participants } from "./Participants/Participants";
 
-function App() {
-  return (
-    <div className="App">
-      <div data-testid="participants">
-        <h3>Aucun participant</h3>
-      </div>
+class App extends Component {
+  state = {
+    participants: []
+  };
 
-      <div data-testid="depenses">
-        <h3>Aucune dépense</h3>
-      </div>
+  render() {
+    const { participants } = this.state;
 
-      <div data-testid="creances">
-        <h3>Aucune créance</h3>
+    return (
+      <div className="App">
+        <Participants
+          participants={participants}
+          onInscription={inscrit =>
+            this.setState({
+              participants: [...participants, inscrit]
+            })
+          }
+        />
+
+        <div data-testid="depenses">
+          <h3>Aucune dépense</h3>
+        </div>
+
+        <div data-testid="creances">
+          <h3>Aucune créance</h3>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
