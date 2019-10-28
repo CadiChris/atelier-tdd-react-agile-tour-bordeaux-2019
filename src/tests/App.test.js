@@ -60,6 +60,19 @@ describe("<App />", () => {
     expectVide(app.getByLabelText("Montant"));
     expectVide(app.getByLabelText("Payeur"));
   });
+
+  it("affiche les créances", () => {
+    const app = render(<App />);
+
+    inscrire("Jim", app);
+    inscrire("Pam", app);
+    depenser("Pam", 100, app);
+
+    const creances = app.getByTestId("creances");
+    expect(creances).toHaveTextContent(
+      "Jim doit 50 euros à Pam"
+    );
+  });
 });
 
 function inscrire(participant, app) {

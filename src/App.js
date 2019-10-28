@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { Participants } from "./Participants/Participants";
 import { Depenses } from "./Depenses/Depenses";
+import { calculerLesCreances } from "./Creances/calculerLesCreances";
 
 class App extends Component {
   state = {
@@ -11,6 +12,10 @@ class App extends Component {
 
   render() {
     const { participants, depenses } = this.state;
+    const creances = calculerLesCreances(
+      depenses,
+      participants
+    );
 
     return (
       <div className="App">
@@ -34,6 +39,11 @@ class App extends Component {
 
         <div data-testid="creances">
           <h3>Aucune créance</h3>
+          {creances.map((c, i) => (
+            <div key={i}>
+              {`${c.payeur} doit ${c.montant} euros à ${c.receveur}`}
+            </div>
+          ))}
         </div>
       </div>
     );
