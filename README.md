@@ -25,4 +25,6 @@ Les étapes de l'atelier :
 * la saisie des dépenses
 * le calcul de créances
 
-`master` ne contient rien de particulier.
+`master` sert à confirmer que la technique requise fonctionne : 
+- `yarn test` lance les tests
+- `yarn start` lance l'application dans le navigateur
