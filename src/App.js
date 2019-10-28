@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Participants } from "./Participants/Participants";
+import { Depenses } from "./Depenses/Depenses";
 
 class App extends Component {
   state = {
-    participants: []
+    participants: [],
+    depenses: []
   };
 
   render() {
-    const { participants } = this.state;
+    const { participants, depenses } = this.state;
 
     return (
       <div className="App">
@@ -21,9 +23,14 @@ class App extends Component {
           }
         />
 
-        <div data-testid="depenses">
-          <h3>Aucune dépense</h3>
-        </div>
+        <Depenses
+          depenses={depenses}
+          onDepenser={depense =>
+            this.setState({
+              depenses: [...depenses, depense]
+            })
+          }
+        />
 
         <div data-testid="creances">
           <h3>Aucune créance</h3>
